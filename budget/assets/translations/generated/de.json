@@ -1180,5 +1180,8 @@
   "import-warning": "Import-Warnung",
   "import-warning-description": "Der Import schlägt möglicherweise fehl! Bitte stelle sicher, dass du eine gültige Cashew-Sicherungsdatei [.sqlite] oder [.sql] ausgewählt hast",
   "duplicate-budget-question": "Doppeltes Budget?",
-  "duplicate-budget": "Doppeltes Budget"
+  "duplicate-budget": "Doppeltes Budget",
+  "export-data": "Datendatei exportieren",
+  "import-data": "Datendatei importieren",
+  "local-backup-description": "Backup"
 }

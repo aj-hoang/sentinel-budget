@@ -1180,5 +1180,8 @@
   "import-warning": "Aviso de importação",
   "import-warning-description": "A importação pode falhar! Certifique-se de ter selecionado um arquivo de backup válido do Cashew [.sqlite] ou [.sql]",
   "duplicate-budget-question": "Orçamento duplicado?",
-  "duplicate-budget": "Orçamento duplicado"
+  "duplicate-budget": "Orçamento duplicado",
+  "export-data": "Exportar arquivo de dados",
+  "import-data": "Importar arquivo de dados",
+  "local-backup-description": "Cópia de segurança"
 }

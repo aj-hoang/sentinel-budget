@@ -1180,5 +1180,8 @@
   "import-warning": "இறக்குமதி எச்சரிக்கை",
   "import-warning-description": "இறக்குமதி தோல்வியடையலாம்! சரியான முந்திரி [.sqlite] அல்லது [.sql] காப்புப் பிரதி கோப்பைத் தேர்ந்தெடுத்துள்ளீர்கள் என்பதை உறுதிப்படுத்திக் கொள்ளவும்",
   "duplicate-budget-question": "நகல் பட்ஜெட்?",
-  "duplicate-budget": "நகல் பட்ஜெட்"
+  "duplicate-budget": "நகல் பட்ஜெட்",
+  "export-data": "தரவு கோப்பு ஏற்றுமதி",
+  "import-data": "தரவு கோப்பை இறக்குமதி செய்க",
+  "local-backup-description": "காப்புப்பிரதி"
 }

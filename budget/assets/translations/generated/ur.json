@@ -1180,5 +1180,8 @@
   "import-warning": "انتباہ درآمد کریں۔",
   "import-warning-description": "درآمد ناکام ہو سکتا ہے! براہ کرم یقینی بنائیں کہ آپ نے ایک درست کاجو [.sqlite] یا [.sql] بیک اپ فائل کا انتخاب کیا ہے۔",
   "duplicate-budget-question": "ڈپلیکیٹ بجٹ؟",
-  "duplicate-budget": "ڈپلیکیٹ بجٹ"
+  "duplicate-budget": "ڈپلیکیٹ بجٹ",
+  "export-data": "ڈیٹا فائل برآمد کریں",
+  "import-data": "ڈیٹا فائل درآمد کریں",
+  "local-backup-description": "بیک اپ"
 }
