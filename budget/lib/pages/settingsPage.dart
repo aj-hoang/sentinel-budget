@@ -21,7 +21,6 @@ import 'package:budget/widgets/dropdownSelect.dart';
 import 'package:budget/widgets/exportDB.dart';
 import 'package:budget/widgets/importCSV.dart';
 import 'package:budget/widgets/exportCSV.dart';
-import 'package:budget/pages/autoTransactionsPageEmail.dart';
 import 'package:budget/pages/activityPage.dart';
 import 'package:budget/pages/editAssociatedTitlesPage.dart';
 import 'package:budget/pages/editBudgetPage.dart';
@@ -241,11 +240,6 @@ class MorePages extends StatelessWidget {
                           ),
                         )
                       : SizedBox.shrink(),
-              if (hasSideNavigation == false)
-                Expanded(
-                    child: GoogleAccountLoginButton(
-                  key: settingsGoogleAccountLoginButtonKey,
-                )),
             ],
           ),
           if (hasSideNavigation == false)
@@ -568,27 +562,16 @@ class SettingsPageContent extends StatelessWidget {
         //   title: "Auto Transactions",
         //   icon: appStateSettings["outlinedIcons"] ? Icons.auto_fix_high_outlined : Icons.auto_fix_high_rounded,
         // ),
-
-        appStateSettings["emailScanning"]
-            ? SettingsContainerOpenPage(
-                openPage: AutoTransactionsPageEmail(),
-                title: "auto-email-transactions".tr(),
-                icon: appStateSettings["outlinedIcons"]
-                    ? Icons.mark_email_unread_outlined
-                    : Icons.mark_email_unread_rounded,
-              )
-            : SizedBox.shrink(),
-
-        appStateSettings["notificationScanningDebug"] &&
-                getPlatform(ignoreEmulation: true) == PlatformOS.isAndroid
-            ? SettingsContainerOpenPage(
-                title: "Notification Transactions",
-                openPage: AutoTransactionsPageNotifications(),
-                icon: appStateSettings["outlinedIcons"]
-                    ? Icons.edit_notifications_outlined
-                    : Icons.edit_notifications_rounded,
-              )
-            : SizedBox.shrink(),
+        // appStateSettings["notificationScanningDebug"] &&
+        //         getPlatform(ignoreEmulation: true) == PlatformOS.isAndroid
+        //     ? SettingsContainerOpenPage(
+        //         title: "Notification Transactions",
+        //         openPage: AutoTransactionsPageNotifications(),
+        //         icon: appStateSettings["outlinedIcons"]
+        //             ? Icons.edit_notifications_outlined
+        //             : Icons.edit_notifications_rounded,
+        //       )
+        //     : SizedBox.shrink(),
 
         SettingsContainerOpenPage(
           openPage: BillSplitter(),
@@ -618,10 +601,6 @@ class SettingsPageContent extends StatelessWidget {
 
         ImportDB(),
 
-        GoogleAccountLoginButton(
-          isOutlinedButton: false,
-          forceButtonName: "google-drive".tr(),
-        ),
       ],
     );
   }

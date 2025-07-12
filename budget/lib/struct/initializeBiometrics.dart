@@ -16,7 +16,6 @@ enum AuthResult {
   authenticated,
   unauthenticated,
   error,
-  errorBackupRestoreLaunch,
 }
 
 bool authAvailable = false;
@@ -25,12 +24,6 @@ Future<AuthResult> checkBiometrics({
   bool checkAlways = false,
 }) async {
   try {
-    if (kIsWeb) {
-      authAvailable = false;
-      await updateSettings("requireAuth", false, updateGlobalState: false);
-      return AuthResult.authenticated;
-    }
-
     final LocalAuthentication auth = LocalAuthentication();
     authAvailable =
         await auth.isDeviceSupported() || await auth.canCheckBiometrics;
@@ -42,7 +35,6 @@ Future<AuthResult> checkBiometrics({
     await auth.stopAuthentication();
 
     if (authAvailable) {
-      //bool biometricsOnly = (await auth.canCheckBiometrics);
       return (await auth.authenticate(
         localizedReason: "verify-identity".tr(),
         options: AuthenticationOptions(biometricOnly: false),
@@ -51,13 +43,9 @@ Future<AuthResult> checkBiometrics({
           : AuthResult.unauthenticated;
     }
 
-    return isDatabaseImportedOnThisSession
-        ? AuthResult.errorBackupRestoreLaunch
-        : AuthResult.error;
+    return AuthResult.error;
   } catch (e) {
-    return isDatabaseImportedOnThisSession
-        ? AuthResult.errorBackupRestoreLaunch
-        : AuthResult.error;
+    return AuthResult.error;
   }
 }
 
@@ -83,35 +71,6 @@ class _InitializeBiometricsState extends State<InitializeBiometrics> {
     AuthResult result = await checkBiometrics();
     setState(() {
       authResult = result;
-    });
-    if (authResult == AuthResult.errorBackupRestoreLaunch) {
-      // Allow bypass on initial backup restore launch
-      _biometricErrorPopup();
-      setState(() {
-        authResult = AuthResult.authenticated;
-      });
-    }
-  }
-
-  _biometricErrorPopup() {
-    // Wait so that we get a context on the navigatorKey
-    // Since Initialize biometrics does not have access to Material navigator in the widget tree
-    // because we want to keep the app fully locked
-    Future.delayed(Duration(milliseconds: 500), () {
-      openPopup(
-        null,
-        barrierDismissible: false,
-        icon: appStateSettings["outlinedIcons"]
-            ? Icons.warning_outlined
-            : Icons.warning_rounded,
-        title: "biometrics-error".tr(),
-        description: "biometrics-error-description".tr(),
-        onSubmitLabel: "ok".tr(),
-        onSubmit: () {
-          updateSettings("requireAuth", false, updateGlobalState: false);
-          popRoute(null);
-        },
-      );
     });
   }
 
@@ -156,8 +115,7 @@ class _InitializeBiometricsState extends State<InitializeBiometrics> {
               ),
             ),
             AnimatedExpanded(
-              expand: authResult == AuthResult.error ||
-                  authResult == AuthResult.errorBackupRestoreLaunch,
+              expand: authResult == AuthResult.error,
               child: Padding(
                 padding: const EdgeInsetsDirectional.symmetric(
                     horizontal: 18, vertical: 20),
