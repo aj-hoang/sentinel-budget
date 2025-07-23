@@ -12,11 +12,7 @@ import 'package:flutter/services.dart';
 import 'package:timer_builder/timer_builder.dart';
 
 bool enableSwipeDownToRefresh(BuildContext context) {
-  return selectingTransactionsActive == 0 &&
-      runningCloudFunctions == false &&
-      appStateSettings["hasSignedIn"] != false &&
-      appStateSettings["backupSync"] == true &&
-      googleUser != null;
+  return false;
   // && getIsFullScreen(context) == false;
 }
 
@@ -111,7 +107,6 @@ class _PullDownToRefreshSyncState extends State<PullDownToRefreshSync>
   _onPointerUp(PointerUpEvent event) {
     if ((totalDragY - swipeDownThreshold) > dragAmountForRefresh &&
         swipeDownToRefresh) {
-      _refreshSync();
       HapticFeedback.heavyImpact();
     } else {
       _animationController.reverse();
@@ -126,13 +121,6 @@ class _PullDownToRefreshSyncState extends State<PullDownToRefreshSync>
       swipeDownToRefresh = false;
     } else {
       swipeDownToRefresh = true;
-    }
-  }
-
-  _refreshSync() async {
-    _animationController.reverse();
-    if (runningCloudFunctions == false) {
-      await runAllCloudFunctions(context);
     }
   }
 

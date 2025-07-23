@@ -782,27 +782,6 @@ void deleteAllDataFlow(BuildContext context) {
                   maxLines: 10,
                 ),
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: SyncCloudBackupButton(
-                      onTap: () async {
-                        popRoute(context);
-                        pushRoute(context, AccountsPage());
-                      },
-                    ),
-                  ),
-                  SizedBox(width: 18),
-                  Expanded(
-                    child: BackupsCloudBackupButton(
-                      onTap: () async {
-                        popRoute(context);
-                        pushRoute(context, AccountsPage());
-                      },
-                    ),
-                  ),
-                ],
-              ),
             ],
           ),
         ),

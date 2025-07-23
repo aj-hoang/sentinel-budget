@@ -1180,5 +1180,8 @@
   "import-warning": "تحذير الاستيراد",
   "import-warning-description": "قد يفشل الاستيراد! الرجاء التأكد من تحديد ملف نسخة احتياطية صالح لـ Cashew [.sqlite] أو [.sql].",
   "duplicate-budget-question": "ميزانية مكررة؟",
-  "duplicate-budget": "ميزانية مكررة"
+  "duplicate-budget": "ميزانية مكررة",
+  "export-data": "تصدير ملف بيانات Cashew",
+  "import-data": "استيراد ملف بيانات Cashew",
+  "local-backup-description": "نسخ احتياطي"
 }

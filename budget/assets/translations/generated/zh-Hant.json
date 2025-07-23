@@ -1180,5 +1180,8 @@
   "import-warning": "進口警告",
   "import-warning-description": "導入可能會失敗！請確保您選擇了有效的 Cashew [.sqlite] 或 [.sql] 備份文件",
   "duplicate-budget-question": "預算重複？",
-  "duplicate-budget": "重複預算"
+  "duplicate-budget": "重複預算",
+  "export-data": "匯出資料文件",
+  "import-data": "導入資料文件",
+  "local-backup-description": "備份"
 }

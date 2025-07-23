@@ -1180,5 +1180,8 @@
   "import-warning": "Ostrzeżenie dotyczące importu",
   "import-warning-description": "Import może się nie powieść! Upewnij się, że wybrałeś odpowiedni rodzaj kopii zapasowej Cashew [.sqlite] lub [.sql]",
   "duplicate-budget-question": "Zduplikowany budżet?",
-  "duplicate-budget": "Duplikat budżetu"
+  "duplicate-budget": "Duplikat budżetu",
+  "export-data": "Eksportuj plik danych",
+  "import-data": "Importuj plik danych",
+  "local-backup-description": "Kopia zapasowa"
 }

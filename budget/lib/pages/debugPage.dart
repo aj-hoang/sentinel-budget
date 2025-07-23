@@ -20,7 +20,6 @@ import 'package:budget/widgets/ratingPopup.dart';
 import 'package:budget/widgets/settingsContainers.dart';
 import 'package:budget/widgets/textInput.dart';
 import 'package:budget/widgets/textWidgets.dart';
-import 'package:budget/widgets/util/appLinks.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -584,14 +583,6 @@ class DebugPage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Button(
-                  label: "Force full sync",
-                  onTap: () async {
-                    sharedPreferences.setString(
-                        "dateOfLastSyncedWithClient", "{}");
-                    runAllCloudFunctions(context);
-                  }),
-              SizedBox(height: 20),
-              Button(
                 expandedLayout: true,
                 label:
                     "Clean database delete logs (WARNING: Make sure you sync with all other devices first!)",
@@ -762,8 +753,6 @@ class DebugPage extends StatelessWidget {
                   }),
               SizedBox(height: 10),
               HorizontalBreak(),
-              AppLinkTesting(),
-              HorizontalBreak(),
               SizedBox(height: 10),
               TextFont(
                   maxLines: 10,
@@ -862,62 +851,6 @@ class DebugPage extends StatelessWidget {
         ColorBox(
             color: Theme.of(context).colorScheme.onErrorContainer,
             name: "onErrorContainer"),
-      ],
-    );
-  }
-}
-
-class AppLinkTesting extends StatefulWidget {
-  const AppLinkTesting({super.key});
-
-  @override
-  State<AppLinkTesting> createState() => _AppLinkTestingState();
-}
-
-class _AppLinkTestingState extends State<AppLinkTesting> {
-  @override
-  Widget build(BuildContext context) {
-    String appLinkString = "";
-    return Column(
-      children: [
-        TextInput(
-          labelText: "Test App Link",
-          keyboardType: TextInputType.multiline,
-          maxLines: null,
-          minLines: 3,
-          onChanged: (value) {
-            appLinkString = value;
-          },
-        ),
-        SizedBox(height: 10),
-        Button(
-            label: "Execute App Link",
-            onTap: () async {
-              Uri uri;
-              try {
-                uri = Uri.parse(appLinkString);
-                List<String> resultOutput = [];
-                await executeAppLink(
-                  context,
-                  uri,
-                  onDebug: (dynamic outResult) {
-                    resultOutput.add(outResult.toString());
-                  },
-                );
-                openPopup(
-                  context,
-                  title: "Result",
-                  descriptionWidget: CodeBlock(
-                    text: resultOutput.toString(),
-                  ),
-                );
-              } catch (e) {
-                openSnackbar(SnackbarMessage(
-                    title: "Error Parsing", description: e.toString()));
-              }
-            }),
-        SizedBox(height: 10),
-        AboutDeepLinking(),
       ],
     );
   }
